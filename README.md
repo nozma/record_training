@@ -1,0 +1,1 @@
+懸垂回数をAlexa経由でspreadsheetに記録していくためのAlexaスキル
