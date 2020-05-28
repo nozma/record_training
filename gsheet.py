@@ -11,19 +11,12 @@ def get_auth():
       token_uri='https://oauth2.googleapis.com/token',
       client_id=os.environ.get('CLIENT_ID'),
       client_secret=os.environ.get('CLIENT_SECRET')
-    )
-
-  service = build('sheets', 'v4', credentials=credentials)
+  )
+  service = build('script', 'v1', credentials=credentials, cache_discovery=False)
   return service
 
-def write_data(spreadsheet_id, values, service, range):
-  body = {
-    'values': [values],
-  }
-  service.spreadsheets().values().append(
-    spreadsheetId=spreadsheet_id,
-    range=range,
-    valueInputOption='USER_ENTERED',
-    body=body
+def write_data(service, request):
+  service.scripts().run(
+    body = request,
+    scriptId = os.environ.get('SCRIPT_ID')
   ).execute()
-
