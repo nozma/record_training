@@ -1,0 +1,26 @@
+service: RecordTraining
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-northeast-1
+  environment:
+    ACCESS_TOKEN: ${env:ACCESS_TOKEN}
+    CLIENT_ID: ${env:CLIENT_ID}
+    CLIENT_SECRET: ${env:CLIENT_SECRET}
+    REFRESH_TOKEN: ${env:REFRESH_TOKEN}
+    SCRIPT_ID: ${env:SCRIPT_ID}
+
+functions:
+  record-training:
+    handler: lambda_function.handler
+    events:
+      - alexaSkill: ${env:ALEXA_SKILL_ID}
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
