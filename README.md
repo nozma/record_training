@@ -102,7 +102,12 @@ https://developers.google.com/oauthplayground にアクセス。
 
 ### Alexa skillの作成
 
-TODO
+注意：公開せずに使用するために普段使用しているAlexaと同じアカウントでログインすること。
+
+スキルを新規作成し、次の作業を行う。
+
+- JSONエディターに`alexa_skill/model.json`の内容をコピペする。
+- エンドポイント > デフォルトの地域にLambda関数のARNを入力（次に述べる手順でデプロイ後、AWS > Lambdaから確認）
 
 ### AWS Lambdaへのデプロイ
 
