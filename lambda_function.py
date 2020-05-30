@@ -18,7 +18,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speech_text = "懸垂を記録するには、チンアップを3回やった、のように言ってください。"
+        speech_text = "何をやりましたか？"
 
         return (
             handler_input.response_builder
