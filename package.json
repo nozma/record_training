@@ -1,0 +1,23 @@
+{
+  "name": "record_training",
+  "version": "1.0.0",
+  "description": "筋トレの回数をAlexa経由でspreadsheetに記録していくためのAlexaスキル",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nozma/record_training.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nozma/record_training/issues"
+  },
+  "homepage": "https://github.com/nozma/record_training#readme",
+  "dependencies": {
+    "serverless": "^1.71.3",
+    "serverless-python-requirements": "^5.1.0"
+  }
+}
