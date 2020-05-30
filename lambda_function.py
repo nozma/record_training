@@ -8,6 +8,7 @@ from ask_sdk_core.utils import is_request_type, is_intent_name, get_slot_value
 from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
+from ask_sdk_model.slu.entityresolution.status_code import StatusCode
 
 sb = SkillBuilder()
 
@@ -43,6 +44,12 @@ class RecordChinUpHandler(AbstractRequestHandler):
             handler_input = handler_input,
             slot_name = "method"
         )
+
+        slots = handler_input.request_envelope.request.intent.slots
+        if "method" in slots:
+            method_slot_resolution = slots["method"].resolutions.resolutions_per_authority[0]
+            if method_slot_resolution.status.code == StatusCode.ER_SUCCESS_MATCH:
+                method = method_slot_resolution.values[0].value.name
  
         request = {
             "function": "appendRecords",
@@ -57,9 +64,9 @@ class RecordChinUpHandler(AbstractRequestHandler):
 
         gsheet.write_data(gsheet.get_auth(), request)
         
-        speech_text = str(number) + "回" + method + "の記録をしました"
+        speech_text = str(number) + "回、" + method + "の記録をしました"
         handler_input.response_builder.speak(speech_text).set_card(
-            SimpleCard("懸垂記録", speech_text)).set_should_end_session(
+            SimpleCard("筋トレ記録", speech_text)).set_should_end_session(
             True)
         return handler_input.response_builder.response
 
