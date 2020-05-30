@@ -7,7 +7,6 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler, AbstractExc
 from ask_sdk_core.utils import is_request_type, is_intent_name, get_slot_value
 from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
-from ask_sdk_model.ui import SimpleCard
 from ask_sdk_model.slu.entityresolution.status_code import StatusCode
 
 sb = SkillBuilder()
@@ -65,9 +64,7 @@ class RecordChinUpHandler(AbstractRequestHandler):
         gsheet.write_data(gsheet.get_auth(), request)
         
         speech_text = str(number) + "回、" + method + "の記録をしました"
-        handler_input.response_builder.speak(speech_text).set_card(
-            SimpleCard("筋トレ記録", speech_text)).set_should_end_session(
-            True)
+        handler_input.response_builder.speak(speech_text).set_should_end_session(True)
         return handler_input.response_builder.response
 
 
