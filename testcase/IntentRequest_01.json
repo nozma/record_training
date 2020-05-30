@@ -1,0 +1,75 @@
+{
+    "version": "1.0",
+    "session": {
+      "new": true,
+      "sessionId": "amzn1.echo-api.session.123456789012",
+      "application": {
+        "applicationId": "amzn1.ask.skill.987654321"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.testUser"
+      },
+      "attributes": {}
+    },
+    "context": {
+      "AudioPlayer": {
+        "playerActivity": "IDLE"
+      },
+      "System": {
+        "application": {
+          "applicationId": "amzn1.ask.skill.987654321"
+        },
+        "user": {
+          "userId": "amzn1.ask.account.testUser"
+        },
+        "device": {
+          "supportedInterfaces": {
+            "AudioPlayer": {}
+          }
+        }
+      }
+    },
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.1234",
+		"timestamp": "2020-05-30T14:03:12Z",
+		"locale": "ja-JP",
+		"intent": {
+			"name": "RecordChinUp",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"method": {
+					"name": "method",
+					"value": "懸垂",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.echo-api.request.1234",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "プルアップ",
+											"id": "e12b7bf926f8aad72ecdb5254b140f5d"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"number": {
+					"name": "number",
+					"value": "10",
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		},
+		"dialogState": "COMPLETED"
+	}
+}
