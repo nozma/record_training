@@ -104,12 +104,14 @@ https://developers.google.com/oauthplayground にアクセス。
 
 TODO
 
-### AWS Lambdaの設定
+### AWS Lambdaへのデプロイ
 
-環境変数として以下のものを設定しておく必要がある。
+Serverlessを使ってデプロイする。
+
+.envファイルを作成し、次の環境変数を記述しておく。
 
 - `ACCESS_TOKEN`
-    - 「トークンの発行」で発行したアクセストークン（期限すぐ切れるので本当は不要かも）
+    - 「トークンの発行」で発行したアクセストークン
 - `REFRESH_TOKEN`
     - 「トークンの発行」で発行したリフレッシュトークン
 - `CLIENT_ID`
@@ -118,3 +120,4 @@ TODO
     - GCPプロジェクトの認証情報にあるもの
 - `SCRIPT_ID`
     - GASのもの
+- `ALEXA_SKILL_ID`

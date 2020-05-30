@@ -1,0 +1,225 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "筋トレ",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "終了",
+                        "ストップ",
+                        "やめ"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "RecordChinUp",
+                    "slots": [
+                        {
+                            "name": "number",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "{number} 回やった",
+                                "{number} 回やりました",
+                                "{number}",
+                                "{number} 回"
+                            ]
+                        },
+                        {
+                            "name": "method",
+                            "type": "METHOD",
+                            "samples": [
+                                "{method} をやりました",
+                                "{method} をやった",
+                                "{method}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{method} をやった",
+                        "{method}",
+                        "{number} 回",
+                        "{number} 回記録",
+                        "{method} を記録",
+                        "{method} を {number} 回記録して",
+                        "{method} を {number} 回",
+                        "{method} {number} 回記録",
+                        "{method} {number} 回記録して",
+                        "{number} 回 {method} を記録して",
+                        "{number} 回 {method} を記録",
+                        "{number} 回 {method}",
+                        "{method} {number} 回",
+                        "{method} で {number} 回の記録を作成して",
+                        "{number} 回の {method} の記録を作成して",
+                        "{number} 回 {method} で記録して",
+                        "{method} で {number} 回記録して"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "METHOD",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "ダンベルカール"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "腹筋ローラー"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "腹筋"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ワイドグリップ",
+                                "synonyms": [
+                                    "ワイドグリッププルアップ"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "プッシュアップ",
+                                "synonyms": [
+                                    "腕立て",
+                                    "腕立て伏せ"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "プルアップ",
+                                "synonyms": [
+                                    "懸垂"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "チンアップ"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "RecordChinUp",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "number",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.105822579401.625181696546"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isGreaterThanOrEqualTo",
+                                    "prompt": "Slot.Validation.105822579401.625181696546.1499154750322",
+                                    "value": "1"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "method",
+                            "type": "METHOD",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.105822579401.1503747091348"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.105822579401.1503747091348.1374398669084"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.105822579401.1503747091348",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "何の筋トレをしましたか"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "何をやりましたか"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "トレーニングの種類を教えて下さい"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.105822579401.625181696546",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "回数を教えて下さい"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "何回やりましたか"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.105822579401.1503747091348.1374398669084",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "すみません。知らないトレーニングメニューは記録することができません。"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "すみません。もう一度トレーニングメニューを教えて下さい。"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.105822579401.625181696546.1499154750322",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "回数をききとれなかったので、もう一度教えて下さい。"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "すみません。もう一度回数を教えて下さい。"
+                    }
+                ]
+            }
+        ]
+    }
+}
