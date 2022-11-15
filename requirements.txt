@@ -18,7 +18,7 @@ googleapis-common-protos==1.53.0
 httplib2==0.19.1
 idna==2.10
 jmespath==0.10.0
-oauthlib==3.1.1
+oauthlib==3.2.1
 packaging==20.9
 protobuf==3.17.1
 pyasn1-modules==0.2.8
